@@ -6,15 +6,15 @@ export const metadata: Metadata = {
 };
 
 const creators = [
-  { name: "Anas EL HAMEDOUCHI", category: "Lifestyle", level: "Macro", followers: "612K", score: 92, initials: "AE" },
-  { name: "Bessam CHEHAM", category: "Humour", level: "Macro", followers: "487K", score: 89, initials: "BC" },
-  { name: "Sofia GUEDIRA", category: "Mode", level: "Mid", followers: "219K", score: 88, initials: "SG" },
-  { name: "Souhaila ABBAD", category: "Beauty", level: "Mid", followers: "184K", score: 85, initials: "SA" },
-  { name: "Tasnim", category: "Lifestyle", level: "Micro", followers: "96K", score: 82, initials: "T" },
+  { name: "Anas EL HAMEDOUCHI", category: "Lifestyle", level: "Méga", followers: "1.4M", score: 92, initials: "AE", image: "/assets/creators/anas-el-hamedouchi.png" },
+  { name: "Bessam CHEHAM", category: "Family", level: "Méga", followers: "717K", score: 89, initials: "BC", image: "/assets/creators/bessam-cheham.png" },
+  { name: "Sofia GUEDIRA", category: "Family", level: "Méga", followers: "667K", score: 88, initials: "SG", image: "/assets/creators/sofia-guedira.png" },
+  { name: "Souhaila ABBAD", category: "Lifestyle", level: "Macro", followers: "176K", score: 85, initials: "SA", image: "/assets/creators/souhaila-abbad.png" },
+  { name: "Tasnim", category: "Beauty", level: "Macro", followers: "103K", score: 82, initials: "T", image: "/assets/creators/tasnim.png" },
 ];
 
 function Mark({ compact = false }: { compact?: boolean }) {
-  return <a className={`mark ${compact ? "compact" : ""}`} href="#top" aria-label="somatch — Accueil"><span className="mark-dot" />somatch</a>;
+  return <a className={`mark ${compact ? "compact" : ""}`} href="#top" aria-label="somatch — Accueil"><span>somatch</span><img src="/assets/somatch-mark.png" alt="" /></a>;
 }
 
 function ArrowIcon() { return <span aria-hidden="true">↗</span>; }
@@ -44,7 +44,7 @@ function Score({ value, small = false }: { value: number; small?: boolean }) {
 }
 
 function Avatar({ creator, large = false }: { creator: typeof creators[number]; large?: boolean }) {
-  return <div className={`avatar ${large ? "large" : ""}`} aria-label={`Photo de ${creator.name} à fournir`}><span>{creator.initials}</span></div>;
+  return <div className={`avatar ${large ? "large" : ""}`}><img src={creator.image} alt={`Photo de ${creator.name}`} /></div>;
 }
 
 function CreatorCard({ creator, featured = false }: { creator: typeof creators[number]; featured?: boolean }) {
@@ -89,7 +89,12 @@ const benefitItems = [
   ["⌁", "Mesurez l’impact réel", "de vos campagnes"],
 ];
 
-function LogoStrip() { return <section className="logo-strip"><p>Ils nous font confiance</p><div>{["LC Waikiki", "Carrefour", "URIAGE", "KAZYON", "AGL", "SONARGES"].map((x)=><span key={x}>{x}</span>)}</div></section>; }
+const partnerLogos = [
+  ["LC Waikiki", "/assets/brands/lc-waikiki.png"], ["Carrefour", "/assets/brands/carrefour.png"],
+  ["Uriage", "/assets/brands/uriage.png"], ["Kazyon", "/assets/brands/kazyon.png"],
+  ["AGL", "/assets/brands/agl.png"], ["Sonarges", "/assets/brands/sonarges.png"],
+];
+function LogoStrip() { return <section className="logo-strip"><p>Ils nous font confiance</p><div>{partnerLogos.map(([name,src])=><img src={src} alt={name} key={name}/>)}</div></section>; }
 
 function AISystem() {
   return <div className="ai-system">
