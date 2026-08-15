@@ -92,6 +92,8 @@ function TrustSection() {
   </section>;
 }
 
+function MoroccanInsightSection(){return <section className="morocco-section" aria-label="Insight marocain"><img src="/assets/insight-marocain.png" alt="Au Maroc, l’influence est locale, variée et puissante"/></section>}
+
 const benefits = [
   { number: "01", title: <>Gagnez du temps</>, text: <>Jusqu’à 80 % de recherche<br/>en moins.</>, icon: "clock", tone: "rose" },
   { number: "02", title: <>Décidez avec plus<br/>de précision</>, text: <>Des données fiables +<br/>le somatch Score.</>, icon: "target", tone: "violet" },
@@ -100,7 +102,7 @@ const benefits = [
 ];
 
 function BenefitsSection() {
-  return <section className="benefits-section" id="why" aria-labelledby="benefits-title"><div className="benefit-mesh left"/><div className="benefit-mesh right"/>
+  return <section className="benefits-section" id="why" aria-labelledby="benefits-title">
     <div className="benefits-intro"><span className="section-pill"><i>✦</i> POURQUOI SOMATCH</span><h2 id="benefits-title">La bonne technologie.<br/>De <span>vrais résultats.</span></h2></div>
     <div className="benefits-grid">{benefits.map((benefit)=><article className={`benefit-card ${benefit.tone}`} key={benefit.number}>
       <div className="benefit-icon-wrap"><span className={`drawn-icon ${benefit.icon}`} aria-hidden="true"><i/><b/><em/></span></div>
@@ -134,20 +136,8 @@ function ProblemSection() {
   return <section className="problem-section" aria-labelledby="problem-title"><div className="problem-mesh"/><div className="problem-copy"><span className="problem-pill">△ &nbsp; LE PROBLÈME</span><h2 id="problem-title">Trouver les<br/>bons créateurs<br/>ne devrait pas<br/>prendre des<br/><span>heures.</span></h2><p>Les méthodes actuelles sont lentes,<br/>complexes et peu fiables.</p><i/></div><ProblemVisuals/><div className="problem-list">{problems.map(([number,title,text],index)=><article key={number as string} className={`problem-item p${index+1}`}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>;
 }
 
-const campaignCards = [
-  ["Sonarges — Sport & Lifestyle Summer Vibes", "/assets/campaigns/sonarges.png"],
-  ["LC Waikiki — Mode & Tendance Printemps", "/assets/campaigns/lc-waikiki.png"],
-  ["Bioderma — Photoderm SPF 50+", "/assets/campaigns/bioderma.png"],
-  ["Mustela — No Knots Happy Hair", "/assets/campaigns/mustela.png"],
-  ["Uriage Day Experience", "/assets/campaigns/uriage.png"],
-  ["Filorga Launch Night", "/assets/campaigns/filorga.png"],
-];
-
 function CampaignsSection() {
-  return <section className="campaigns-section" aria-labelledby="campaigns-title"><div className="campaigns-head"><div><span>✦ &nbsp; NOS CAMPAGNES</span><h2 id="campaigns-title">Découvrez nos<br/><b>campagnes récentes.</b></h2><p>Des collaborations qui transforment les bons matchs<br/>en contenus qui performent.</p></div><a href="#all-campaigns">Voir toutes les campagnes <i>→</i></a></div>
-    <div className="campaign-carousel"><div className="campaign-track">{campaignCards.map(([name,src])=><article className="campaign-card" key={name}><img src={src} alt={name}/></article>)}</div></div>
-    <div className="campaign-promises"><div><span>♙</span><p>Créateurs sélectionnés<br/>avec soin</p></div><div><span>↗</span><p>Résultats mesurables<br/>et transparents</p></div><div><span>♡</span><p>Des contenus authentiques<br/>qui engagent</p></div><div><span>◎</span><p>Des campagnes alignées<br/>à vos objectifs</p></div></div>
-  </section>;
+  return <section className="campaigns-section campaigns-image-section" aria-label="Nos campagnes récentes"><img src="/assets/campaigns-section.png" alt="Découvrez nos campagnes récentes"/></section>;
 }
 
 const processSteps = [
@@ -193,5 +183,5 @@ export default function Home() {
   return <main id="top"><Header/><section className="hero-section"><div className="mesh mesh-left"/><div className="mesh mesh-right"/>
     <div className="hero-copy"><div className="badge"><span>✦</span> L’IA au service de vos campagnes d’influence</div><h1>From brief to<br/>perfect match<span>.</span></h1><p>Votre brief. Notre IA. Les bons créateurs.</p><div className="hero-actions"><a className="primary-cta" href="#start">Commencer avec somatch <span>→</span></a><a className="secondary-cta" href="#platform">Découvrir la plateforme <span>▷</span></a></div></div>
     <ProductCard/>
-  </section><TrustSection/><BenefitsSection/><ProblemSection/><CampaignsSection/><ProcessSection/><AISection/><FeaturesSection/><CampaignWorkflowSection/><AudiencesSection/><DataTrustSection/><FinalCTA/></main>;
+  </section><TrustSection/><MoroccanInsightSection/><BenefitsSection/><CampaignsSection/><ProcessSection/><AISection/><FeaturesSection/><AudiencesSection/><DataTrustSection/><FinalCTA/></main>;
 }
