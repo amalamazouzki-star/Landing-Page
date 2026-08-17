@@ -86,13 +86,13 @@ const trustLogos = [
 
 function TrustSection() {
   const loop = [...trustLogos, ...trustLogos];
-  return <section className="trust-section" aria-labelledby="trust-title">
-    <div className="trust-heading"><i/><span aria-hidden="true">✦</span><h2 id="trust-title">Ils nous font confiance</h2><span aria-hidden="true">✦</span><i/></div>
+  return <section className="trust-section" aria-label="Marques partenaires">
     <div className="logo-marquee"><div className="logo-track">{loop.map(([name,src],index)=><div className="trust-logo" key={`${name}-${index}`} aria-hidden={index >= trustLogos.length}><img src={src} alt={index < trustLogos.length ? name : ""}/></div>)}</div></div>
   </section>;
 }
 
-function MoroccanInsightSection(){return <section className="morocco-section" aria-label="Insight marocain"><img src="/assets/insight-marocain.png" alt="Au Maroc, l’influence est locale, variée et puissante"/></section>}
+const moroccoHighlights=[["♡","Créent de la proximité"],["☆","Inspirent et divertissent"],["♙","Rassemblent des communautés engagées"],["⌖","Ancrés dans les réalités locales"],["⌁","Génèrent un impact mesurable"]];
+function MoroccanInsightSection(){return <section className="morocco-section" aria-label="Insight marocain"><div className="morocco-main"><img src="/assets/insight-marocain.png" alt="Au Maroc, l’influence est locale, variée et puissante"/></div><div className="morocco-titles">{moroccoHighlights.map(([icon,title])=><div key={title}><span aria-hidden="true">{icon}</span><b>{title}</b></div>)}</div><div className="morocco-callout"><div className="morocco-callout-card"><span aria-hidden="true">✦</span><p><b>somatch</b> vous aide à identifier les bons créateurs,<br/>pour les bonnes audiences et les bons objectifs.</p><i/><p>Des matches pertinents,<br/>basés sur la data et la compréhension<br/>profonde des audiences marocaines.</p></div></div></section>}
 
 const benefits = [
   { number: "01", title: <>Gagnez du temps</>, text: <>Jusqu’à 80 % de recherche<br/>en moins.</>, icon: "clock", tone: "rose" },
@@ -137,7 +137,7 @@ function ProblemSection() {
 }
 
 function CampaignsSection() {
-  return <section className="campaigns-section campaigns-image-section" aria-label="Nos campagnes récentes"><img src="/assets/campaigns-section.png" alt="Découvrez nos campagnes récentes"/></section>;
+  return <section className="campaigns-section campaigns-image-section" aria-label="Nos campagnes récentes"><img src="/assets/campaigns-section.png" alt="Découvrez nos campagnes récentes"/><div className="campaign-poster-motion" aria-hidden="true">{Array.from({length:6},(_,i)=><span key={i}/>)}</div></section>;
 }
 
 const processSteps = [
@@ -177,7 +177,7 @@ const trustMetrics=[["♙","50K+","Créateurs analysés"],["◔","360°","Analys
 const analysisPillars=[["♙","Audience","Démographie, intérêts, localisation et affinités."],["♡","Engagement","Taux d’engagement, qualité des interactions et authenticité."],["▥","Performance","Vues moyennes, portée, croissance et récurrence des résultats."],["♢","Brand Fit","Adéquation avec votre marque, vos valeurs et vos objectifs."],["▣","Contenu","Formats, qualité éditoriale, créativité et capacité à performer."],["⌖","Localisation","Zones géographiques, langue et pertinence culturelle."]];
 function DataTrustSection(){return <section className="data-trust-section" aria-labelledby="data-trust-title"><div className="dt-intro"><span>♢ &nbsp; DATA &amp; TRUST</span><h2 id="data-trust-title">Des décisions <b>basées</b><br/>sur les <b>données.</b></h2><p>La créativité reste humaine. somatch vous donne les données pour mieux décider.</p></div><div className="dt-metrics">{trustMetrics.map(([icon,value,label],i)=><article key={label} className={`dtm-${i}`}><span>{icon}</span><strong>{value}</strong><b>{label}</b><i/></article>)}</div><div className="dt-divider"><i/>somatch analyse chaque profil selon 6 piliers clés<i/></div><div className="dt-pillars">{analysisPillars.map(([icon,title,text],i)=><article key={title} className={`dtp-${i}`}><span>{icon}</span><h3>{title}</h3><p>{text}</p></article>)}</div><div className="dt-explain"><div className="dt-shield">♢</div><div><h3>Des recommandations <b>expliquées</b>, pas une boîte noire.</h3><p>Chaque score et chaque recommandation somatch sont accompagnés<br/>d’éléments concrets pour comprendre pourquoi un profil correspond<br/>à votre campagne.</p></div><ul><li>Transparence sur les critères utilisés</li><li>Sources de données vérifiées</li><li>Mise à jour continue et contrôlée</li></ul></div></section>}
 
-function FinalCTA(){return <section className="final-cta" aria-labelledby="final-cta-title"><div className="cta-dots top"/><div className="cta-dots bottom"/><div className="cta-orbit"><i/><i/></div><span className="cta-spark" aria-hidden="true">✦</span><div className="cta-content"><div className="cta-brand">✦ somatch</div><h2 id="final-cta-title">Your next<br/>perfect match<br/>starts here<span>.</span></h2><p>Transformez votre prochain brief en casting d’influenceurs<br/>pertinent, argumenté et mesurable.</p><div className="cta-actions"><a href="#start">Commencer avec somatch <span>→</span></a><a href="#demo">Demander une démo <span>→</span></a></div></div></section>}
+function FinalCTA(){return <section className="final-cta" aria-labelledby="final-cta-title"><div className="cta-dots top"/><div className="cta-dots bottom"/><div className="cta-orbit"><i/><i/></div><span className="cta-spark" aria-hidden="true">✦</span><div className="cta-content"><div className="cta-brand"><img src="/assets/section-one/somatch-logo.png" alt="somatch"/></div><h2 id="final-cta-title">Your next perfect match starts here<span>.</span></h2><p>Transformez votre prochain brief en casting d’influenceurs<br/>pertinent, argumenté et mesurable.</p><div className="cta-actions"><a href="#start">Commencer avec somatch <span>→</span></a><a href="#demo">Demander une démo <span>→</span></a></div></div></section>}
 
 export default function Home() {
   return <main id="top"><Header/><section className="hero-section"><div className="mesh mesh-left"/><div className="mesh mesh-right"/>
