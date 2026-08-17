@@ -20,7 +20,7 @@ function Brand({ symbol = false }: { symbol?: boolean }) {
 function Header() {
   return <header className="site-header"><div className="header-inner">
     <a href="#top" aria-label="Accueil somatch"><Brand /></a>
-    <nav aria-label="Navigation principale"><a href="#why">Pourquoi somatch</a><a href="#features">Fonctionnalités</a><a href="#audiences">Pour qui</a><a href="#resources">Ressources</a><a href="#pricing">Tarifs</a></nav>
+    <nav aria-label="Navigation principale"><a href="#why">Pourquoi somatch</a><a href="#features">Fonctionnalités</a><a href="#audiences">Pour qui</a></nav>
     <div className="header-actions"><a className="login" href="#login">Se connecter</a><a className="demo-button" href="#demo">Demander une démo <span>→</span></a></div>
     <a className="mobile-demo" href="#demo">Démo <span>→</span></a>
   </div></header>;
@@ -92,23 +92,11 @@ function TrustSection() {
 }
 
 const moroccoHighlights=[["♡","Créent de la proximité"],["☆","Inspirent et divertissent"],["♙","Rassemblent des communautés engagées"],["⌖","Ancrés dans les réalités locales"],["⌁","Génèrent un impact mesurable"]];
-function MoroccanInsightSection(){return <section className="morocco-section" aria-label="Insight marocain"><div className="morocco-main"><img src="/assets/insight-marocain.png" alt="Au Maroc, l’influence est locale, variée et puissante"/></div><div className="morocco-titles">{moroccoHighlights.map(([icon,title])=><div key={title}><span aria-hidden="true">{icon}</span><b>{title}</b></div>)}</div><div className="morocco-callout"><div className="morocco-callout-card"><span aria-hidden="true">✦</span><p><b>somatch</b> vous aide à identifier les bons créateurs,<br/>pour les bonnes audiences et les bons objectifs.</p><i/><p>Des matches pertinents,<br/>basés sur la data et la compréhension<br/>profonde des audiences marocaines.</p></div></div></section>}
-
-const benefits = [
-  { number: "01", title: <>Gagnez du temps</>, text: <>Jusqu’à 80 % de recherche<br/>en moins.</>, icon: "clock", tone: "rose" },
-  { number: "02", title: <>Décidez avec plus<br/>de précision</>, text: <>Des données fiables +<br/>le somatch Score.</>, icon: "target", tone: "violet" },
-  { number: "03", title: <>Justifiez vos choix</>, text: <>Des recommandations<br/>argumentées par l’IA.</>, icon: "shield", tone: "rose" },
-  { number: "04", title: <>Mesurez l’impact</>, text: <>Des KPIs estimés<br/>dès le casting.</>, icon: "chart", tone: "violet" },
-];
+const moroccoCreators=Array.from({length:7},(_,i)=>({src:`/assets/morocco-creators/creator-${i+1}.png`,alt:`Portrait de créateur marocain ${i+1}`}));
+function MoroccanInsightSection(){return <section className="morocco-section" aria-labelledby="morocco-title"><header className="morocco-header"><span><i>✦</i> INSIGHT MAROCAIN</span><h2 id="morocco-title">Au Maroc, l’influence<br/>est <b>locale, variée</b> et <b>puissante.</b></h2><p>Des créateurs qui parlent vrai, reflètent nos cultures et inspirent au quotidien.</p></header><div className="morocco-gallery">{moroccoCreators.map((creator,i)=><figure key={creator.src}><img src={creator.src} alt={creator.alt}/><span aria-hidden="true">{String(i+1).padStart(2,"0")}</span></figure>)}</div><div className="morocco-titles">{moroccoHighlights.map(([icon,title])=><div key={title}><span aria-hidden="true">{icon}</span><b>{title}</b></div>)}</div><div className="morocco-callout"><div className="morocco-callout-card"><span aria-hidden="true">✦</span><p><b>somatch</b> vous aide à identifier les bons créateurs,<br/>pour les bonnes audiences et les bons objectifs.</p><i/><p>Des matches pertinents,<br/>basés sur la data et la compréhension<br/>profonde des audiences marocaines.</p></div></div></section>}
 
 function BenefitsSection() {
-  return <section className="benefits-section" id="why" aria-labelledby="benefits-title">
-    <div className="benefits-intro"><span className="section-pill"><i>✦</i> POURQUOI SOMATCH</span><h2 id="benefits-title">La bonne technologie.<br/>De <span>vrais résultats.</span></h2></div>
-    <div className="benefits-grid">{benefits.map((benefit)=><article className={`benefit-card ${benefit.tone}`} key={benefit.number}>
-      <div className="benefit-icon-wrap"><span className={`drawn-icon ${benefit.icon}`} aria-hidden="true"><i/><b/><em/></span></div>
-      <span className="benefit-number">{benefit.number}</span><h3>{benefit.title}</h3><p>{benefit.text}</p><i className="benefit-accent"/>
-    </article>)}</div>
-  </section>;
+  return <section className="why-certitude-section" id="why" aria-label="Pourquoi Somatch : moins de recherche, plus de certitude"><img src="/assets/why-somatch-certitude.png" alt="Pourquoi Somatch : Search, Match, Decide — moins de recherche et plus de certitude"/><div className="why-certitude-effects" aria-hidden="true"><span className="why-step search"/><span className="why-step match"/><span className="why-step decide"/><i className="why-ring"/><i className="why-score"/><i className="why-sheen"/></div></section>;
 }
 
 const problemCreators = [
@@ -136,8 +124,17 @@ function ProblemSection() {
   return <section className="problem-section" aria-labelledby="problem-title"><div className="problem-mesh"/><div className="problem-copy"><span className="problem-pill">△ &nbsp; LE PROBLÈME</span><h2 id="problem-title">Trouver les<br/>bons créateurs<br/>ne devrait pas<br/>prendre des<br/><span>heures.</span></h2><p>Les méthodes actuelles sont lentes,<br/>complexes et peu fiables.</p><i/></div><ProblemVisuals/><div className="problem-list">{problems.map(([number,title,text],index)=><article key={number as string} className={`problem-item p${index+1}`}><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></section>;
 }
 
+const campaignCards=[
+  ["/assets/campaigns/sonarges.png","Campagne Sonarges — Sport & Lifestyle Summer Vibes"],
+  ["/assets/campaigns/lc-waikiki.png","Campagne LC Waikiki — Mode & Tendance Printemps"],
+  ["/assets/campaigns/bioderma.png","Campagne Bioderma — Photoderm SPF 50+"],
+  ["/assets/campaigns/mustela.png","Campagne Mustela — No Knots Happy Hair"],
+  ["/assets/campaigns/uriage.png","Activation Uriage Day Experience"],
+  ["/assets/campaigns/filorga.png","Événement Filorga Launch Night"],
+];
+const campaignPromises=[["♙","Créateurs sélectionnés","avec soin"],["▥","Résultats mesurables","et transparents"],["♡","Des contenus authentiques","qui engagent"],["◎","Des campagnes alignées","à vos objectifs"]];
 function CampaignsSection() {
-  return <section className="campaigns-section campaigns-image-section" aria-label="Nos campagnes récentes"><img src="/assets/campaigns-section.png" alt="Découvrez nos campagnes récentes"/><div className="campaign-poster-motion" aria-hidden="true">{Array.from({length:6},(_,i)=><span key={i}/>)}</div></section>;
+  return <section className="campaigns-section campaigns-html-section" aria-labelledby="campaigns-title"><header className="campaigns-head"><div><span>✦ &nbsp; NOS CAMPAGNES</span><h2 id="campaigns-title">Découvrez nos<br/><b>campagnes récentes.</b></h2><p>Des collaborations qui transforment les bons matchs<br/>en contenus qui performent.</p></div></header><div className="campaign-carousel"><div className="campaign-track">{campaignCards.map(([src,alt],i)=><figure className="campaign-card" key={src}><img src={src} alt={alt}/><span aria-hidden="true">{String(i+1).padStart(2,"0")}</span></figure>)}</div></div><div className="campaign-promises">{campaignPromises.map(([icon,title,text])=><div key={title}><span aria-hidden="true">{icon}</span><p><b>{title}</b><br/>{text}</p></div>)}</div></section>;
 }
 
 const processSteps = [
@@ -159,7 +156,7 @@ const recommendationStats = [["♙","5","profils recommandés"],["☆","86/100",
 
 function AISection(){return <section className="ai-section" aria-labelledby="ai-title"><div className="ai-intro"><span className="section-pill"><i>✦</i> SOMATCH AI</span><h2 id="ai-title">Votre brief devient une<br/><b>recommandation stratégique.</b></h2><p>somatch AI analyse votre campagne, croise les données<br/>et construit un casting adapté à vos objectifs.</p></div><div className="ai-stage">
   <article className="ai-brief-card"><h3>▧ &nbsp; VOTRE BRIEF</h3>{briefRows.map(([icon,title,text])=><div className="ai-brief-row" key={title}><span>{icon}</span><p><b>{title}</b><small>{text}</small></p></div>)}</article>
-  <div className="ai-engine"><div className="ai-orbits"><i/><i/><i/><span className="ai-chip audience-chip">♙ &nbsp; Audience</span><span className="ai-chip engagement-chip">♡ &nbsp; Engagement</span><span className="ai-chip brand-chip">♢ &nbsp; Brand Fit</span><span className="ai-chip content-chip">▣ &nbsp; Content</span><span className="ai-chip performance-chip">▥ &nbsp; Performance</span><div className="ai-core"><strong>✦</strong><b>somatch <em>AI</em></b></div></div><div className="ai-loading">✣ &nbsp; Analyse en cours...</div></div>
+  <div className="ai-engine"><div className="ai-orbits"><i/><i/><i/><div className="ai-orbit-tags"><span className="ai-chip audience-chip">♙ &nbsp; Audience</span><span className="ai-chip engagement-chip">♡ &nbsp; Engagement</span><span className="ai-chip brand-chip">♢ &nbsp; Brand Fit</span><span className="ai-chip content-chip">▣ &nbsp; Content</span><span className="ai-chip performance-chip">▥ &nbsp; Performance</span></div><div className="ai-core"><img src="/assets/section-one/somatch-logo.png" alt="somatch"/><em>AI</em></div></div><div className="ai-loading">✣ &nbsp; Analyse en cours...</div></div>
   <article className="ai-result-card"><h3>✦ &nbsp; RECOMMANDATION SOMATCH AI</h3><div className="ai-stats">{recommendationStats.map(([icon,value,label])=><div key={label}><span>{icon}</span><b>{value}</b><small>{label}</small></div>)}</div><div className="ai-reasons"><h4>Pourquoi ce casting ?</h4><p><span>✓</span><b>Audience alignée avec votre cible</b><small>Intérêts, âge, localisation, comportements.</small></p><p><span>✓</span><b>Créateurs performants sur vos plateformes</b><small>Historique de performance et formats optimaux.</small></p><p><span>✓</span><b>Équilibre optimal entre reach, engagement et budget</b><small>Un mix intelligent pour maximiser votre ROI.</small></p></div><a href="#demo">Tester somatch AI &nbsp; →</a><small className="no-card">♙ &nbsp; Aucune carte bancaire requise</small></article>
   </div><div className="ai-benefits"><div><span>✿</span><p><b>Données multi-sources</b><small>Mises à jour en temps réel</small></p></div><div><span>⌕</span><p><b>Analyse intelligente</b><small>de milliers de signaux</small></p></div><div><span>◎</span><p><b>Recommandations</b><small>précises et argumentées</small></p></div><div><span>◷</span><p><b>Gain de temps</b><small>considérable</small></p></div><div><span>♢</span><p><b>Décisions confiantes</b><small>basées sur la data</small></p></div></div></section>}
 
@@ -177,7 +174,7 @@ const trustMetrics=[["♙","50K+","Créateurs analysés"],["◔","360°","Analys
 const analysisPillars=[["♙","Audience","Démographie, intérêts, localisation et affinités."],["♡","Engagement","Taux d’engagement, qualité des interactions et authenticité."],["▥","Performance","Vues moyennes, portée, croissance et récurrence des résultats."],["♢","Brand Fit","Adéquation avec votre marque, vos valeurs et vos objectifs."],["▣","Contenu","Formats, qualité éditoriale, créativité et capacité à performer."],["⌖","Localisation","Zones géographiques, langue et pertinence culturelle."]];
 function DataTrustSection(){return <section className="data-trust-section" aria-labelledby="data-trust-title"><div className="dt-intro"><span>♢ &nbsp; DATA &amp; TRUST</span><h2 id="data-trust-title">Des décisions <b>basées</b><br/>sur les <b>données.</b></h2><p>La créativité reste humaine. somatch vous donne les données pour mieux décider.</p></div><div className="dt-metrics">{trustMetrics.map(([icon,value,label],i)=><article key={label} className={`dtm-${i}`}><span>{icon}</span><strong>{value}</strong><b>{label}</b><i/></article>)}</div><div className="dt-divider"><i/>somatch analyse chaque profil selon 6 piliers clés<i/></div><div className="dt-pillars">{analysisPillars.map(([icon,title,text],i)=><article key={title} className={`dtp-${i}`}><span>{icon}</span><h3>{title}</h3><p>{text}</p></article>)}</div><div className="dt-explain"><div className="dt-shield">♢</div><div><h3>Des recommandations <b>expliquées</b>, pas une boîte noire.</h3><p>Chaque score et chaque recommandation somatch sont accompagnés<br/>d’éléments concrets pour comprendre pourquoi un profil correspond<br/>à votre campagne.</p></div><ul><li>Transparence sur les critères utilisés</li><li>Sources de données vérifiées</li><li>Mise à jour continue et contrôlée</li></ul></div></section>}
 
-function FinalCTA(){return <section className="final-cta" aria-labelledby="final-cta-title"><div className="cta-dots top"/><div className="cta-dots bottom"/><div className="cta-orbit"><i/><i/></div><span className="cta-spark" aria-hidden="true">✦</span><div className="cta-content"><div className="cta-brand"><img src="/assets/section-one/somatch-logo.png" alt="somatch"/></div><h2 id="final-cta-title">Your next perfect match starts here<span>.</span></h2><p>Transformez votre prochain brief en casting d’influenceurs<br/>pertinent, argumenté et mesurable.</p><div className="cta-actions"><a href="#start">Commencer avec somatch <span>→</span></a><a href="#demo">Demander une démo <span>→</span></a></div></div></section>}
+function FinalCTA(){return <section className="final-cta" aria-labelledby="final-cta-title"><div className="cta-dots top"/><div className="cta-dots bottom"/><div className="cta-orbit"><i/><i/></div><div className="cta-floaters" aria-hidden="true"><i>✦</i><i>◇</i><i>·</i><i>✦</i><i>○</i></div><span className="cta-spark" aria-hidden="true">✦</span><div className="cta-content"><div className="cta-brand"><img src="/assets/section-one/somatch-logo.png" alt="somatch"/></div><h2 id="final-cta-title">Your next perfect match starts here<span>.</span></h2><p>Transformez votre prochain brief en casting d’influenceurs<br/>pertinent, argumenté et mesurable.</p><div className="cta-actions"><a href="#start">Commencer avec somatch <span>→</span></a><a href="#demo">Demander une démo <span>→</span></a></div></div></section>}
 
 export default function Home() {
   return <main id="top"><Header/><section className="hero-section"><div className="mesh mesh-left"/><div className="mesh mesh-right"/>
